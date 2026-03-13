@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@hello-pangea/dnd": "^18.0.1",
+        "framer-motion": "^12.36.0",
         "material-symbols": "^0.40.2",
         "react-hot-toast": "^2.6.0",
         "react-quill": "^2.0.0"

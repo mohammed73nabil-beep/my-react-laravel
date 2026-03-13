@@ -108,9 +108,6 @@ Route::get('/services/buildings', function () {
         ),
     ]);
 })->name('services.buildings');
-
-
-
 Route::get('/about-us', function () {
     return Inertia::render('Public/About/Index');
 })->name('about');
