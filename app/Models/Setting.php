@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Cache;
 
 class Setting extends Model
 {
+    use \App\Traits\HasMediaCleanup;
+
+    protected array $mediaColumns = ['value'];
+
     protected $fillable = ['key', 'value', 'type', 'group'];
 
     protected static function booted(): void

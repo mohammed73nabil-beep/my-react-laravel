@@ -56,8 +56,8 @@ export default function ProjectsIndex({ projects = [] }) {
                         className="w-full h-full object-cover"
                         src={getImageUrl('projects.hero.background_image', "https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2070&auto=format&fit=crop")}
                     />
-                    <div className="absolute inset-0 bg-[#064E3B]" style={{ opacity: getOpacity('projects.hero.background_image', 60) / 100 }}></div>
-                    <div className="absolute inset-0 hero-gradient" style={{ opacity: Math.min((getOpacity('projects.hero.background_image', 60) + 40) / 100, 1) }}></div>
+                    <div className="absolute inset-0 bg-black/20"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 text-center mt-20">
@@ -136,7 +136,7 @@ export default function ProjectsIndex({ projects = [] }) {
                                                 {pageContents?.[`${cmsKeyPrefix}.category`] || project.category}
                                             </div>
                                             {/* Hover Overlay */}
-                                            <div className="project-overlay absolute inset-0 bg-gradient-to-t from-[#064E3B] via-[#064E3B]/80 to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                            <div className="project-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6">
                                                 <p className="text-gray-300 text-sm line-clamp-3 mb-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                                                     {pageContents?.[`${cmsKeyPrefix}.description`] || project.description || project.description_ar || ''}
                                                 </p>

@@ -25,7 +25,7 @@
         </style>
 
         {{-- Page title overridden per-page via Inertia <Head> --}}
-        <title inertia>{{ config('app.name') }}</title>
+        <title inertia>حدائق سار</title>
 
         {{-- Scripts --}}
         @routes

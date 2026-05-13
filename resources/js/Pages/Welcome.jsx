@@ -6,10 +6,22 @@ import GallerySection from '@/Components/GallerySection';
 import SeoHead from '@/Components/SeoHead';
 import Footer from '@/Components/Footer';
 import BeforeAfterSlider from '@/Components/BeforeAfterSlider';
+import VideoSection from '@/Components/VideoSection';
+
 
 export default function Welcome({ projects, siteContents, galleryImages = [], beforeAfterImages = [] }) {
-    const { globalSettings, pageContents, pageContentExtras = {} } = usePage().props;
+    const { globalSettings, pageContents: rawPageContents, pageContentExtras = {} } = usePage().props;
     const defaultSiteContents = siteContents || {};
+    
+    // Merge safely: only overwrite if the new value is not empty
+    const pageContents = { ...defaultSiteContents };
+    if (rawPageContents) {
+        Object.keys(rawPageContents).forEach(key => {
+            if (rawPageContents[key]) {
+                pageContents[key] = rawPageContents[key];
+            }
+        });
+    }
     const siteName = globalSettings?.site_name?.value || 'حديقتي لاندسكيب';
 
     const [stats, setStats] = useState({
@@ -20,7 +32,7 @@ export default function Welcome({ projects, siteContents, galleryImages = [], be
 
     // Helper function to get image URL
     const getImageUrl = (key, defaultUrl = '') => {
-        const val = pageContents?.[key];
+        const val = pageContents[key];
         if (!val) return defaultUrl;
         if (val.startsWith('http') || val.startsWith('/')) return val;
         return `/storage/${val}`;
@@ -136,7 +148,7 @@ export default function Welcome({ projects, siteContents, galleryImages = [], be
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={`${pageContents?.['home.hero.title'] || 'نحوّل مساحتك إلى حديقة فاخرة'} — ${siteName}`}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_30s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={getImageUrl('home.hero.image', "/images/hero-bg-2.jpg")}
                         fetchpriority="high"
                         width="1920"
@@ -192,7 +204,15 @@ export default function Welcome({ projects, siteContents, galleryImages = [], be
                 </div>
             </section>
 
-
+            {/* 2) VIDEO SHOWREEL — أقوى قسم لبناء الثقة بعد الهيرو مباشرة */}
+            <VideoSection
+                videoUrl={pageContents?.['home.video.url']}
+                thumbnail={pageContents?.['home.video.thumbnail']
+                    ? `/storage/${pageContents['home.video.thumbnail']}`
+                    : null}
+                title={pageContents?.['home.video.title']}
+                subtitle={pageContents?.['home.video.subtitle']}
+            />
 
             {/* 3) BEFORE / AFTER SECTION */}
             {beforeAfterImages && beforeAfterImages.length > 0 && (
@@ -247,10 +267,10 @@ export default function Welcome({ projects, siteContents, galleryImages = [], be
                                         <img
                                             src={project.image_path ? `/storage/${project.image_path}` : (project.image_url?.startsWith('http') ? project.image_url : `/storage/${project.image_url}`)}
                                             alt={project.title}
-                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-40"
+                                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                             onError={(e) => { e.target.onerror = null; e.target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD0JAHsObzIwnKDCWmYTUyAsR9C7WINbtHiv7-SNPFkwpvyHrGM42q9H2J-Ee7DLoDv4ZlMqlXqVtRvDB8vhp8nYJohCzmTUqr5HcXUp2SHaYN4S_QfhWu6bX_c7gpYGuWPRa3TtWsyF62L3fbjnXlfn_Kh-HQJS1zAnRNrpSODl5zr5LVSSkKw1K7FuK46TOtZOwKzrUUQO90P_O0bee6_wDBb7dO-38mIlKKEpPBEQdmTbOAymBm0rvhuCFlMrx_V9LhK3fdjmCeF'; }}
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#064E3B] via-[#064E3B]/40 to-transparent"></div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
                                         <div className="absolute top-6 right-6">
                                             <span className="bg-[#16A34A] text-[#064E3B] text-sm font-bold px-4 py-2 rounded-full shadow-lg">

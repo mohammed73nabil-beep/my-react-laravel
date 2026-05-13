@@ -176,6 +176,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/content', [SiteContentController::class, 'index'])->name('content.index');
     Route::post('/content', [SiteContentController::class, 'store'])->name('content.store');
     Route::delete('/content/{siteContent}', [SiteContentController::class, 'destroy'])->name('content.destroy');
+
+    // Home Video Management
+    Route::get('/home-video', [\App\Http\Controllers\Admin\HomeVideoController::class, 'index'])->name('home-video.index');
+    Route::post('/home-video', [\App\Http\Controllers\Admin\HomeVideoController::class, 'update'])->name('home-video.update');
 });
 
 Route::get('/dashboard', function () {

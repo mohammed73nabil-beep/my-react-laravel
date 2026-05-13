@@ -14,17 +14,12 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }) {
         setSliderPos(pos);
     };
 
-    const handleMove = (e) => {
-        if (!isDragging.current && e.type !== 'touchmove' && e.type !== 'click') return;
-        
-        let clientX = e.clientX;
-        if (e.touches && e.touches.length > 0) {
-            clientX = e.touches[0].clientX;
-        }
-        updatePosition(clientX);
-    };
-
     const handleDown = (e) => {
+        // Prevent default to avoid selection/scrolling when dragging handle
+        if (e.type === 'mousedown') {
+            e.preventDefault();
+        }
+        
         isDragging.current = true;
         let clientX = e.clientX;
         if (e.touches && e.touches.length > 0) {
@@ -36,26 +31,29 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }) {
             isDragging.current = false;
             document.removeEventListener('mouseup', handleUp);
             document.removeEventListener('mousemove', handleGlobalMove);
+            document.removeEventListener('touchend', handleUp);
+            document.removeEventListener('touchmove', handleGlobalMove);
         };
         
         const handleGlobalMove = (moveEvent) => {
-            if (isDragging.current) {
-                updatePosition(moveEvent.clientX);
+            if (!isDragging.current) return;
+            let currentClientX = moveEvent.clientX;
+            if (moveEvent.touches && moveEvent.touches.length > 0) {
+                currentClientX = moveEvent.touches[0].clientX;
             }
+            updatePosition(currentClientX);
         };
 
         document.addEventListener('mouseup', handleUp);
         document.addEventListener('mousemove', handleGlobalMove);
+        document.addEventListener('touchend', handleUp);
+        document.addEventListener('touchmove', handleGlobalMove, { passive: false });
     };
 
     return (
         <div 
             ref={containerRef}
-            className="relative w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden cursor-ew-resize select-none shadow-2xl touch-none group bg-[#064E3B]"
-            onMouseDown={handleDown}
-            onTouchStart={handleDown}
-            onTouchMove={handleMove}
-            onClick={handleMove}
+            className="relative w-full h-[400px] md:h-[600px] rounded-3xl overflow-hidden select-none shadow-2xl group bg-[#064E3B]"
         >
             {/* Before Image (Background) */}
             <img 
@@ -80,11 +78,16 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }) {
 
             {/* Slider Handle */}
             <div 
-                className="absolute top-0 bottom-0 w-1 bg-[#22C55E] shadow-[0_0_15px_rgba(34,197,94,0.8)] pointer-events-none flex items-center justify-center z-10 transition-transform duration-75"
+                className="absolute top-0 bottom-0 w-10 flex items-center justify-center z-10 transition-transform duration-75 cursor-ew-resize touch-none"
                 style={{ left: `${sliderPos}%`, transform: 'translateX(-50%)' }}
+                onMouseDown={handleDown}
+                onTouchStart={handleDown}
             >
-                <div className="w-12 h-12 rounded-full bg-[#064E3B] border-2 border-[#22C55E] shadow-lg flex items-center justify-center text-[#22C55E] group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-[24px] transform rotate-90">unfold_more</span>
+                {/* The visual line */}
+                <div className="absolute top-0 bottom-0 w-1 bg-[#22C55E] shadow-[0_0_15px_rgba(34,197,94,0.8)] pointer-events-none"></div>
+                {/* The circular handle */}
+                <div className="w-12 h-12 rounded-full bg-[#064E3B] border-2 border-[#22C55E] shadow-lg flex items-center justify-center text-[#22C55E] group-hover:scale-110 transition-transform z-20">
+                    <span className="material-symbols-outlined text-[24px] transform rotate-90 pointer-events-none">unfold_more</span>
                 </div>
             </div>
             

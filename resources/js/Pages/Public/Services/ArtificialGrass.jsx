@@ -84,7 +84,7 @@ export default function ArtificialGrassService({ projects = [], galleryImages = 
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={getContent('services.artificial_grass.hero.title', 'تركيب العشب الصناعي')}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={getImageUrl('services.artificial_grass.hero.image', 'https://images.unsplash.com/photo-1594922119159-4d22edfa5041?q=80&w=2070&auto=format&fit=crop')}
                         fetchpriority="high"
                     />

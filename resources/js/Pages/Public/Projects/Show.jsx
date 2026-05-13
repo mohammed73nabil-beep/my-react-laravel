@@ -38,8 +38,8 @@ export default function ProjectShow({ project, relatedProjects = [] }) {
             <section className="relative h-[70vh] min-h-[500px] flex items-end pb-20 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img alt={project.title} className="w-full h-full object-cover" src={mainImg} />
-                    <div className="absolute inset-0 bg-[#064E3B]/40 mix-blend-multiply"></div>
-                    <div className="absolute inset-0 hero-gradient"></div>
+                    <div className="absolute inset-0 bg-black/30"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">

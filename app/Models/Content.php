@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Cache;
 
 class Content extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HasMediaCleanup;
+
+    protected array $mediaColumns = ['value'];
 
     protected $fillable = [
         'page',

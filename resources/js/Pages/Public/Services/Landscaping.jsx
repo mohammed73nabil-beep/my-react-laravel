@@ -96,7 +96,7 @@ export default function LandscapingService({ projects = [], galleryImages = [] }
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={getContent('services.landscaping.hero.title', 'تنسيق الحدائق')}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={getImageUrl('services.landscaping.hero.image', 'https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2070&auto=format&fit=crop')}
                     />
                     <div className="absolute inset-0 bg-[#064E3B]/30" style={{ opacity: getOpacity('services.landscaping.hero.image', 40) / 100 }}></div>

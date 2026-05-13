@@ -99,7 +99,7 @@ export default function BlogShow({ post, relatedPosts }) {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={post.title}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={post.image ? `/storage/${post.image}` : 'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop'}
                     />
                     <div className="absolute inset-0 bg-[#064E3B]/60 mix-blend-multiply"></div>

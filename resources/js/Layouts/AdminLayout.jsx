@@ -61,7 +61,7 @@ export default function AdminLayout({ header, children }) {
                 <div className="p-8 flex items-center gap-3">
                     <div>
                         <h1 className="text-white text-lg font-bold leading-none">نظام الإدارة</h1>
-                        <p className="text-primary text-[10px] uppercase tracking-widest mt-1 font-semibold">Hadiqati Landscape</p>
+                        <p className="text-primary text-[10px] uppercase tracking-widest mt-1 font-semibold">Saargardens.com</p>
                     </div>
                 </div>
                 <nav className="flex-1 px-4 py-4 space-y-2 overflow-y-auto custom-scrollbar">
@@ -78,6 +78,13 @@ export default function AdminLayout({ header, children }) {
                     >
                         <span className="material-symbols-outlined">description</span>
                         <span className="font-medium">المحتويات</span>
+                    </Link>
+                    <Link
+                        href={route('admin.home-video.index')}
+                        className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-all group ${url?.startsWith('/admin/home-video') ? 'active-nav' : 'text-slate-400 hover:bg-white/5 hover:text-white'}`}
+                    >
+                        <span className="material-symbols-outlined">videocam</span>
+                        <span className="font-medium">فيديو الصفحة الرئيسية</span>
                     </Link>
                     <Link
                         href={route('admin.projects.index')}

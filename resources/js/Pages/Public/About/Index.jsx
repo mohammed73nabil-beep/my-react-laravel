@@ -142,7 +142,7 @@ export default function AboutIndex() {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt="مشروع هندسي كبير"
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_25s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={pageContents?.['about.hero.image'] ? (pageContents['about.hero.image'].startsWith('http') ? pageContents['about.hero.image'] : `/storage/${pageContents['about.hero.image']}`) : "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"}
                     />
                     <div className="absolute inset-0 bg-[#064E3B]/70 mix-blend-multiply"></div>

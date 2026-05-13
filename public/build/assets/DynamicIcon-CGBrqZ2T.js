@@ -1,0 +1,1 @@
+import{j as e}from"./vendor-CJiFYoh1.js";function i({name:n,className:t=""}){return n?e.jsx("span",{className:`material-symbols-outlined ${t}`,suppressHydrationWarning:!0,style:{fontVariationSettings:"'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24",display:"inline-flex",alignItems:"center",justifyContent:"center"},children:n}):null}export{i as D};

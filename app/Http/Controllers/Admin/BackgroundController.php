@@ -45,6 +45,7 @@ class BackgroundController extends Controller
                        str_contains(strtolower($content->key), 'hero_bg') ||
                        str_contains(strtolower($content->key), 'cta.background') ||
                        str_contains(strtolower($content->key), 'why.image') ||
+                       str_contains(strtolower($content->key), 'contact.header.image') ||
                        str_contains(strtolower($content->key), 'background');
             })
             ->groupBy('page');

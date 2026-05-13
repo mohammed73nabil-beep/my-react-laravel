@@ -104,6 +104,12 @@ export default function SiteContentIndex({ contents = [] }) {
         'home.cta.title': 'العنوان دعوة للحركة (الرئيسية)',
         'home.cta.description': 'الوصف دعوة للحركة (الرئيسية)',
 
+        // ── فيديو الأعمال (الرئيسية) ──────────────────────────────────────────
+        'home.video.url': '🎬 رابط الفيديو — YouTube أو Vimeo (الرئيسية)',
+        'home.video.title': '🎬 عنوان قسم الفيديو (الرئيسية)',
+        'home.video.subtitle': '🎬 وصف قسم الفيديو (الرئيسية)',
+        'home.video.thumbnail': '🎬 صورة مصغرة للفيديو [نوع: صورة] (الرئيسية)',
+
         // About
         'about.hero.title': 'العنوان الرئيسي (من نحن)',
         'about.hero.subtitle': 'النص الفرعي (من نحن)',

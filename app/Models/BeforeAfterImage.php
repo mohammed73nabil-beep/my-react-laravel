@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Cache;
 
 class BeforeAfterImage extends Model
 {
-    use HasFactory;
+    use HasFactory, \App\Traits\HasMediaCleanup;
+
+    protected array $mediaColumns = ['before_image_path', 'after_image_path'];
 
     protected $fillable = [
         'title',
@@ -20,6 +22,8 @@ class BeforeAfterImage extends Model
 
     protected static function booted()
     {
+        // HasMediaCleanup automatically hooks into 'updating' and 'deleted' events.
+        
         static::created(function ($image) {
             Cache::forget('home_before_after_images');
         });
@@ -30,12 +34,6 @@ class BeforeAfterImage extends Model
 
         static::deleted(function ($image) {
             Cache::forget('home_before_after_images');
-            if ($image->before_image_path) {
-                Storage::disk('public')->delete($image->before_image_path);
-            }
-            if ($image->after_image_path) {
-                Storage::disk('public')->delete($image->after_image_path);
-            }
         });
     }
 }

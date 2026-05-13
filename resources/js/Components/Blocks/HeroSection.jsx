@@ -7,7 +7,7 @@ export default function HeroSection({ data }) {
             <div className="absolute inset-0 z-0">
                 <img
                     alt={data?.title?.ar || 'Hero'}
-                    className="w-full h-full object-cover transform scale-105 animate-[pulse_30s_infinite_alternate]"
+                    className="w-full h-full object-cover"
                     src={data?.image ? data.image : "/images/hero-bg-2.jpg"}
                 />
                 <div className="absolute inset-0 bg-[#064E3B]/60 mix-blend-multiply"></div>

@@ -78,7 +78,7 @@ export default function ServicesIndex({ projects = [], galleryImages = [] }) {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={pageContents?.['services.hero.title'] || 'Hero Background'}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={getBgUrl('services.hero.background_image', '/images/services_hero_bg.png')}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#064E3B]/90 via-[#064E3B]/70 to-[#022C22]"></div>

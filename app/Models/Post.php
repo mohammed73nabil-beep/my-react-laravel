@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use \App\Traits\HasMediaCleanup;
+
+    protected array $mediaColumns = ['image'];
+
     protected $fillable = [
         'category_id',
         'title',

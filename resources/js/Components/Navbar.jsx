@@ -42,7 +42,7 @@ const NavLink = memo(({ link, closeMenu, variant = 'desktop' }) => {
 
 export default function Navbar() {
     const { globalSettings } = usePage().props;
-    const siteName = globalSettings?.site_name?.value || 'حديقتي لاندسكيب';
+    const siteName = globalSettings?.site_name?.value || 'حدائق سار';
     const [isOpen, setIsOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -95,9 +95,6 @@ export default function Navbar() {
                 {/* Row 1: Logo + Toggle */}
                 <div className="flex items-center justify-between px-4 h-14">
                     <Link href={route('home')} className="flex items-center gap-2 shrink-0">
-                        <div className="w-8 h-8 bg-[#16A34A] flex items-center justify-center shadow-sm">
-                            <DynamicIcon name="park" className="text-white text-lg" />
-                        </div>
                         <span className="font-black text-[14px] text-white truncate max-w-[170px]">
                             {siteName}
                         </span>
@@ -137,9 +134,6 @@ export default function Navbar() {
                     {/* Sidebar Header */}
                     <div className="flex items-center justify-between px-5 py-4 bg-[#064E3B]">
                         <div className="flex items-center gap-2">
-                            <div className="w-7 h-7 bg-[#16A34A] flex items-center justify-center">
-                                <DynamicIcon name="park" className="text-white text-base" />
-                            </div>
                             <span className="font-black text-white text-sm">{siteName}</span>
                         </div>
                         <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white transition-colors">
@@ -185,9 +179,6 @@ export default function Navbar() {
                 <div className="w-full max-w-screen-2xl mx-auto px-6 flex items-center justify-between">
                     {/* Logo */}
                     <Link href={route('home')} className="flex items-center gap-2.5 shrink-0">
-                        <div className="w-8 h-8 bg-[#16A34A] flex items-center justify-center">
-                            <DynamicIcon name="park" className="text-white text-xl" />
-                        </div>
                         <span className="font-black text-white text-[15px] hidden lg:block">
                             {siteName}
                         </span>

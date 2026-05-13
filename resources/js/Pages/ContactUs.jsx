@@ -6,8 +6,21 @@ import SeoHead from '@/Components/SeoHead';
 import Footer from '@/Components/Footer';
 
 export default function ContactUs() {
-    const { globalSettings, pageContents } = usePage().props;
+    const { globalSettings, pageContents, pageContentExtras = {} } = usePage().props;
     const siteName = globalSettings?.site_name?.value || 'حديقتي لاندسكيب';
+
+    // Helper functions for dynamic content
+    const getImageUrl = (key, defaultUrl = '') => {
+        const val = pageContents?.[key];
+        if (!val) return defaultUrl;
+        if (val.startsWith('http') || val.startsWith('/')) return val;
+        return `/storage/${val}`;
+    };
+
+    const getOpacity = (key, defaultOpacity = 60) => {
+        return pageContentExtras?.[key] ? parseInt(pageContentExtras[key]) : defaultOpacity;
+    };
+
     const { data, setData, post, processing, errors, reset, recentlySuccessful } = useForm({
         client_name: '',
         phone: '',
@@ -50,6 +63,8 @@ export default function ContactUs() {
     const seoDescription = pageContents?.['contact.header.subtitle']
         || 'تواصل مع فريقنا الهندسي للحصول على عرض سعر مجاني لمشروعك. تنسيق حدائق، تصميم لاندسكيب، تركيب عشب صناعي، شلالات ونوافير، وجلسات خارجية. اتصل بنا الآن!';
 
+    const currentOpacity = getOpacity('contact.header.image', 50);
+
     return (
         <div className="bg-[#f8f7f6] dark:bg-[#022C22] min-h-screen text-gray-800 dark:text-gray-100 font-display selection:bg-[#16A34A] selection:text-[#064E3B]" dir="rtl" lang="ar" style={{ fontFamily: '"Almarai", "Manrope", sans-serif' }}>
             <SeoHead
@@ -69,14 +84,14 @@ export default function ContactUs() {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={`${pageContents?.['contact.header.title'] || 'تواصل معنا'} — ${siteName}`}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_30s_infinite_alternate]"
-                        src={pageContents?.['contact.header.image'] ? (pageContents['contact.header.image'].startsWith('http') ? pageContents['contact.header.image'] : `/storage/${pageContents['contact.header.image']}`) : "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"}
+                        className="w-full h-full object-cover"
+                        src={getImageUrl('contact.header.image', "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop")}
                         fetchpriority="high"
                         width="1920"
                         height="1080"
                     />
-                    <div className="absolute inset-0 bg-[#064E3B]/60 mix-blend-multiply"></div>
-                    <div className="absolute inset-0 hero-gradient"></div>
+                    <div className="absolute inset-0 bg-[#064E3B]" style={{ opacity: currentOpacity / 100 }}></div>
+                    <div className="absolute inset-0 hero-gradient" style={{ opacity: Math.min((currentOpacity + 30) / 100, 1) }}></div>
                 </div>
 
                 <div className="relative z-10 w-full max-w-5xl mx-auto px-4 text-center mt-20">

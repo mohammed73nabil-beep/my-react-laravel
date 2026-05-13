@@ -57,7 +57,7 @@ export default function BlogIndex({ posts, categories, currentCategory }) {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt="المدونة"
-                        className="w-full h-full object-cover filter blur-[2px] transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover filter blur-[2px]"
                         src={heroBg}
                     />
                     <div className="absolute inset-0 bg-[#064E3B]" style={{ opacity: heroOpacity / 100 }}></div>

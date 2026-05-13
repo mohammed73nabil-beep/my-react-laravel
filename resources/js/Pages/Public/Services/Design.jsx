@@ -44,7 +44,7 @@ export default function DesignService({ projects = [], galleryImages = [] }) {
     const services = [
         { title: getContent('services.design.services.item1.title', 'تصميم وتنسيق'), icon: 'design_services', desc: getContent('services.design.services.item1.desc', 'تصاميم حدائق عصرية ومبتكرة تضفي جمالاً طبيعياً على مساحتك الخاصة.') },
         { title: getContent('services.design.services.item2.title', 'العناية الشاملة'), icon: 'park', desc: getContent('services.design.services.item2.desc', 'صيانة وتجديد الحدائق القديمة لتعود كالجديدة وتحسين مظهرها الطبيعي.') },
-        { title: getContent('services.design.services.item3.title', 'نوافير وشلالات'), icon: 'water_drop', desc: getContent('services.design.services.item3.desc', 'تصميم وبناء أحدث الشلالات والنوافير المائية بديكورات حجرية خلابة.') },
+        { title: getContent('services.design.services.item3.title', 'نوافير وشلالات'), icon: 'water_drop', desc: getContent('services.design.services.item3.desc', 'تصميم وبناء أحدث الشلالات والنوافير المائية بتصاميم حجرية خلابة.') },
         { title: getContent('services.design.services.item4.title', 'تجهيز الجلسات'), icon: 'deck', desc: getContent('services.design.services.item4.desc', 'تنفيذ وتجهيز جلسات خارجية وبرجولات خشبية ومظلات بتصاميم راقية.') }
     ];
 
@@ -84,7 +84,7 @@ export default function DesignService({ projects = [], galleryImages = [] }) {
                 <div className="absolute inset-0 z-0">
                     <img
                         alt={getContent('services.design.hero.title', 'تصميم الحدائق واللاندسكيب')}
-                        className="w-full h-full object-cover transform scale-105 animate-[pulse_20s_infinite_alternate]"
+                        className="w-full h-full object-cover"
                         src={getImageUrl('services.design.hero.image', 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop')}
                         fetchpriority="high"
                     />

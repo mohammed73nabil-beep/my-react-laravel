@@ -1,23 +1,24 @@
 import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import DynamicIcon from '@/Components/DynamicIcon';
+import WebsiteOfferBanner from '@/Components/WebsiteOfferBanner';
 
 export default function Footer() {
     const { globalSettings } = usePage().props;
-    const siteName = globalSettings?.site_name?.value || 'حديقتي لاندسكيب';
+    const siteName = globalSettings?.site_name?.value || 'لاندسكيب';
     const sitePhone = globalSettings?.contact_phone?.value || '';
     const siteEmail = globalSettings?.contact_email?.value || '';
     const siteAddress = globalSettings?.address?.value || 'الرياض، المملكة العربية السعودية';
     const workingHours = globalSettings?.working_hours?.value || 'يومياً: 8:00 ص - 6:00 م';
 
     return (
+        <>
         <footer className="bg-[#040A12] pt-20 pb-10 border-t border-white/10 relative z-20 text-gray-400 font-display">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* عمود 1: عن الشركة */}
                     <div>
                         <div className="text-2xl font-black text-white mb-6 flex items-center gap-2">
-                            <DynamicIcon name="architecture" className="text-[#16A34A] text-3xl" />
                             {siteName}
                         </div>
                         <p className="text-sm leading-relaxed mb-6 text-justify">
@@ -142,5 +143,7 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
+        <WebsiteOfferBanner />
+        </>
     );
 }
